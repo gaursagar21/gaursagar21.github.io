@@ -250,15 +250,6 @@ function closePalette() {
 
 // Global keyboard listener
 document.addEventListener('keydown', (e) => {
-    // Cmd/Ctrl+K: open palette
-    if ((e.metaKey || e.ctrlKey) && !e.altKey && !e.shiftKey && (e.key === 'k' || e.key === 'K')) {
-        const tag = document.activeElement?.tagName;
-        if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement?.isContentEditable) return;
-        e.preventDefault();
-        openPalette();
-        return;
-    }
-
     if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.altKey) {
         const tag = document.activeElement?.tagName;
         if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement?.isContentEditable) return;
@@ -275,9 +266,7 @@ function injectKeyboardHint() {
     if (!footer) return;
     const hint = document.createElement('div');
     hint.className = 'kbd-hint';
-    const isMac = /Mac|iPhone|iPad|iPod/i.test(navigator.platform || navigator.userAgent);
-    const mod = isMac ? '⌘' : 'Ctrl';
-    hint.innerHTML = `Press <kbd>/</kbd> or <kbd>${mod}</kbd><kbd>K</kbd> to jump anywhere`;
+    hint.innerHTML = `Press <kbd>/</kbd> to jump anywhere`;
     hint.style.cursor = 'pointer';
     hint.addEventListener('click', () => openPalette());
     footer.appendChild(hint);

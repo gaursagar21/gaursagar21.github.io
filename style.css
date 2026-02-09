@@ -591,17 +591,17 @@ html.focus-mode[data-theme="light"] {
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 3px solid var(--accent);
-    position: relative;
 }
 
 .focus-mode-hint {
-    position: absolute;
-    top: 0;
-    right: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    align-self: flex-end;
+    margin-top: 0.25rem;
     font-size: 0.7rem;
     color: #999;
     opacity: 0;
-    transform: translateY(-5px);
     transition: opacity 0.4s ease, transform 0.4s ease;
     pointer-events: none;
     font-weight: 600;

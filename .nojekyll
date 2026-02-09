@@ -1,0 +1,5 @@
+#
+# Disable GitHub Pages' default Jekyll processing so that
+# static assets like markdown files in `posts/` are served
+# as-is and can be fetched by `blog-loader.js`.
+#

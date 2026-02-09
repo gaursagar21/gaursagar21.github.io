@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artwork - Sagar Gaur</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">SG</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="blog.html">Writing</a>
+                <a href="about.html">About</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">[dark]</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-header">
+            <h1>Artwork</h1>
+        </section>
+
+        <section class="art-stream" id="art-stream">
+            <p>Loading...</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sagar Gaur</p>
+        <div class="footer-links">
+            <a href="radar.html">Tech Radar</a>
+            <a href="art.html">Artwork</a>
+            <a href="photos.html">Photos</a>
+            <a href="books.html">Books</a>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('art-stream');
+            try {
+                const res = await fetch('data/art.json');
+                const pieces = await res.json();
+                
+                container.innerHTML = '';
+                const numerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+                
+                pieces.forEach((piece, i) => {
+                    const figure = document.createElement('figure');
+                    figure.className = 'art-piece';
+                    
+                    const frame = document.createElement('div');
+                    frame.className = 'art-frame';
+                    
+                    if (piece.image) {
+                        const img = document.createElement('img');
+                        img.src = piece.image;
+                        img.alt = piece.title;
+                        img.loading = 'lazy';
+                        frame.appendChild(img);
+                    } else {
+                        const placeholder = document.createElement('div');
+                        placeholder.className = 'art-placeholder-img';
+                        placeholder.textContent = numerals[i] || (i + 1);
+                        frame.appendChild(placeholder);
+                    }
+                    
+                    const caption = document.createElement('figcaption');
+                    
+                    const title = document.createElement('span');
+                    title.className = 'art-title';
+                    title.textContent = piece.title;
+                    
+                    const medium = document.createElement('span');
+                    medium.className = 'art-medium';
+                    medium.textContent = piece.medium;
+                    
+                    caption.appendChild(title);
+                    caption.appendChild(medium);
+                    
+                    figure.appendChild(frame);
+                    figure.appendChild(caption);
+                    container.appendChild(figure);
+                });
+            } catch (e) {
+                container.innerHTML = '<p>Could not load artwork.</p>';
+                console.error(e);
+            }
+            if (typeof applyRandomColors === 'function') applyRandomColors();
+        });
+    </script>
+    <script src="focus-mode.js"></script>
+</body>
+</html>

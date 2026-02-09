@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books - Sagar Gaur</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">SG</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="blog.html">Writing</a>
+                <a href="about.html">About</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">[dark]</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-header">
+            <h1>Books</h1>
+        </section>
+
+        <section class="bookshelf" id="bookshelf">
+            <p>Loading...</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sagar Gaur</p>
+        <div class="footer-links">
+            <a href="radar.html">Tech Radar</a>
+            <a href="art.html">Artwork</a>
+            <a href="photos.html">Photos</a>
+            <a href="books.html">Books</a>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('bookshelf');
+            try {
+                const res = await fetch('data/books.json');
+                const books = await res.json();
+
+                const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                const parsed = books.map(b => {
+                    const d = new Date(b.date);
+                    return { ...b, _date: d, _year: d.getFullYear(), _month: d.getMonth(), _day: d.getDate() };
+                }).sort((a, b) => b._date - a._date);
+
+                const grouped = {};
+                parsed.forEach(b => {
+                    if (!grouped[b._year]) grouped[b._year] = [];
+                    grouped[b._year].push(b);
+                });
+
+                container.innerHTML = '';
+                const years = Object.keys(grouped).sort((a, b) => b - a);
+
+                years.forEach(year => {
+                    const section = document.createElement('div');
+                    section.className = 'book-year-section';
+
+                    const h2 = document.createElement('h2');
+                    h2.className = 'book-year';
+                    h2.textContent = year;
+                    section.appendChild(h2);
+
+                    grouped[year].forEach(book => {
+                        const entry = document.createElement('div');
+                        entry.className = 'book-entry';
+                        if (book.status) entry.classList.add('status-' + book.status);
+
+                        const head = document.createElement('div');
+                        head.className = 'book-head';
+
+                        const title = document.createElement('span');
+                        title.className = 'book-title';
+                        title.textContent = book.title;
+
+                        const rating = document.createElement('span');
+                        rating.className = 'book-rating';
+                        rating.textContent = '★'.repeat(book.rating) + '☆'.repeat(5 - book.rating);
+
+                        head.appendChild(title);
+
+                        if (book.status && book.status !== 'finished') {
+                            const status = document.createElement('span');
+                            status.className = 'book-status ' + book.status;
+                            status.textContent = book.status;
+                            head.appendChild(status);
+                        }
+
+                        head.appendChild(rating);
+
+                        const meta = document.createElement('div');
+                        meta.className = 'book-meta';
+
+                        const author = document.createElement('span');
+                        author.className = 'book-author';
+                        author.textContent = book.author;
+                        meta.appendChild(author);
+
+                        const dateEl = document.createElement('span');
+                        dateEl.className = 'book-date';
+                        dateEl.textContent = `${book._day} ${monthNames[book._month]} ${book._year}`;
+                        meta.appendChild(dateEl);
+
+                        entry.appendChild(head);
+                        entry.appendChild(meta);
+
+                        if (book.thoughts) {
+                            const thoughts = document.createElement('div');
+                            thoughts.className = 'book-thoughts';
+                            const p = document.createElement('p');
+                            p.textContent = book.thoughts;
+                            thoughts.appendChild(p);
+                            entry.appendChild(thoughts);
+
+                            entry.addEventListener('click', () => {
+                                thoughts.classList.toggle('open');
+                            });
+                        }
+
+                        section.appendChild(entry);
+                    });
+
+                    container.appendChild(section);
+                });
+            } catch (e) {
+                container.innerHTML = '<p>Could not load books.</p>';
+                console.error(e);
+            }
+            if (typeof applyRandomColors === 'function') applyRandomColors();
+        });
+    </script>
+    <script src="focus-mode.js"></script>
+</body>
+</html>

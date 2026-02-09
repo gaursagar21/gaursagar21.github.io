@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Sagar Gaur</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .lost {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 500px;
+        }
+        .lost-code {
+            font-size: 6rem;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+        .lost-msg {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+        .lost-sub {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+        [data-theme="dark"] .lost-sub { color: #718096; }
+        .lost-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .lost-hint {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+        [data-theme="dark"] .lost-hint { color: #4a5568; }
+        .lost-hint kbd {
+            display: inline-block;
+            background: var(--bg);
+            border: 1.5px solid rgba(0,0,0,0.2);
+            border-radius: 3px;
+            padding: 0.05rem 0.35rem;
+            font-family: inherit;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        [data-theme="dark"] .lost-hint kbd { border-color: rgba(255,255,255,0.15); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">SG</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="blog.html">Writing</a>
+                <a href="about.html">About</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">[dark]</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="lost">
+            <div class="lost-code">404</div>
+            <p class="lost-msg">You've gone off-script.</p>
+            <p class="lost-sub">This page doesn't exist. Maybe it did once, maybe it never will. Either way, here are some places that do.</p>
+            <div class="lost-links">
+                <a href="index.html" class="link-button">Home</a>
+                <a href="blog.html" class="link-button">Writing</a>
+                <a href="about.html" class="link-button">About</a>
+            </div>
+            <p class="lost-hint">Or press <kbd>/</kbd> to search</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sagar Gaur</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

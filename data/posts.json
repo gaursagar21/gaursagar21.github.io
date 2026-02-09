@@ -1,0 +1,72 @@
+[
+    {
+        "slug": "multi-language-examples",
+        "title": "Code Examples Across Languages",
+        "date": "Feb 9, 2026",
+        "tag": "Programming",
+        "description": "A showcase of code examples in different programming languages to test syntax highlighting."
+    },
+    {
+        "slug": "ai-workflows",
+        "title": "Building AI Workflows at Scale",
+        "date": "Jan 15, 2026",
+        "tag": "AI/ML",
+        "description": "Lessons from building a no-code agentic AI platform connecting 100+ data sources."
+    },
+    {
+        "slug": "llm-evals",
+        "title": "LLM Evals Are Harder Than You Think",
+        "date": "Dec 20, 2025",
+        "tag": "AI/ML",
+        "description": "Why evaluating language models is deceptively difficult and what we learned doing it."
+    },
+    {
+        "slug": "on-call",
+        "title": "What On-Call Taught Me About Software",
+        "date": "Oct 5, 2025",
+        "tag": "Engineering",
+        "description": "The unexpected lessons from being woken up at 3am by your own code."
+    },
+    {
+        "slug": "grpc-migration",
+        "title": "Migrating from REST to gRPC",
+        "date": "Jul 22, 2025",
+        "tag": "Architecture",
+        "description": "The tedious but necessary work of overhauling core backend systems."
+    },
+    {
+        "slug": "monitoring",
+        "title": "The Art of Monitoring",
+        "date": "Apr 10, 2025",
+        "tag": "Infrastructure",
+        "description": "How curiosity-driven dashboards became critical infrastructure tools."
+    },
+    {
+        "slug": "scaling",
+        "title": "From Hundreds to Hundreds of Thousands",
+        "date": "Nov 18, 2024",
+        "tag": "Scaling",
+        "description": "Scaling challenges and solutions when your platform grows 1000x."
+    },
+    {
+        "slug": "founding-engineer",
+        "title": "Notes on Being a Founding Engineer",
+        "date": "Aug 3, 2024",
+        "tag": "Career",
+        "description": "What nobody tells you about being employee number one at a startup."
+    },
+    {
+        "slug": "postgres-tips",
+        "title": "Postgres Things I Wish I Knew Sooner",
+        "date": "May 14, 2024",
+        "tag": "Databases",
+        "description": "A collection of PostgreSQL patterns that saved me hours of debugging."
+    },
+    {
+        "slug": "docker-prod",
+        "title": "Docker in Production: Lessons Learned",
+        "date": "Feb 28, 2024",
+        "tag": "Infrastructure",
+        "description": "Three years of running containers in production, distilled."
+    }
+]

@@ -1,0 +1,98 @@
+[
+    {
+        "title": "Designing Data-Intensive Applications",
+        "author": "Martin Kleppmann",
+        "date": "Jan 12, 2026",
+        "rating": 5,
+        "status": "finished",
+        "thoughts": "The bible of distributed systems. Every chapter made me rethink something I thought I understood. The section on consistency models alone is worth the price."
+    },
+    {
+        "title": "The Staff Engineer's Path",
+        "author": "Tanya Reilly",
+        "date": "Feb 1, 2026",
+        "rating": 4,
+        "status": "reading",
+        "thoughts": "Halfway through. Already changed how I think about influence vs authority. The 'being glue' framing hit hard."
+    },
+    {
+        "title": "Project Hail Mary",
+        "author": "Andy Weir",
+        "date": "Jan 28, 2026",
+        "rating": 5,
+        "status": "finished",
+        "thoughts": "Read it in two sittings. The friendship at the center of this book is one of the best I've encountered in sci-fi. Funny, tense, genuinely moving."
+    },
+    {
+        "title": "A Philosophy of Software Design",
+        "author": "John Ousterhout",
+        "date": "Nov 5, 2025",
+        "rating": 4,
+        "status": "finished",
+        "thoughts": "Short, opinionated, useful. 'Complexity is incremental' should be tattooed on every codebase. Disagree with some of the deep module takes but the core ideas are solid."
+    },
+    {
+        "title": "The Pragmatic Programmer",
+        "author": "Hunt & Thomas",
+        "date": "Sep 20, 2025",
+        "rating": 4,
+        "status": "finished",
+        "thoughts": "Re-read the 20th anniversary edition. Some advice feels obvious now — which probably means it shaped how I think without me noticing."
+    },
+    {
+        "title": "Klara and the Sun",
+        "author": "Kazuo Ishiguro",
+        "date": "Jul 14, 2025",
+        "rating": 5,
+        "status": "finished",
+        "thoughts": "Quietly devastating. Ishiguro writes AI with more empathy than most people write humans. The unreliable narration through Klara's limited understanding is masterful."
+    },
+    {
+        "title": "The Phoenix Project",
+        "author": "Kim, Behr & Spafford",
+        "date": "Apr 3, 2025",
+        "rating": 3,
+        "status": "finished",
+        "thoughts": "Good ideas wrapped in mediocre fiction. If you've lived through a bad deployment pipeline, you'll recognize every character. The DevOps principles land even if the prose doesn't."
+    },
+    {
+        "title": "Exhalation",
+        "author": "Ted Chiang",
+        "date": "Feb 18, 2025",
+        "rating": 5,
+        "status": "finished",
+        "thoughts": "Every story is a thought experiment that refuses to stay abstract. 'The Lifecycle of Software Objects' is the most honest thing written about AI relationships."
+    },
+    {
+        "title": "System Design Interview",
+        "author": "Alex Xu",
+        "date": "Oct 22, 2024",
+        "rating": 3,
+        "status": "finished",
+        "thoughts": "Useful as a reference, not great as a read. Good for pattern recognition before interviews. Wouldn't revisit."
+    },
+    {
+        "title": "The Three-Body Problem",
+        "author": "Cixin Liu",
+        "date": "Aug 10, 2024",
+        "rating": 4,
+        "status": "finished",
+        "thoughts": "The scale of imagination here is unmatched. The Dark Forest theory changed how I think about the Fermi paradox. Characters are thin but the ideas are enormous."
+    },
+    {
+        "title": "Thinking, Fast and Slow",
+        "author": "Daniel Kahneman",
+        "date": "May 6, 2024",
+        "rating": 4,
+        "status": "abandoned",
+        "thoughts": "Got through about 60%. Fascinating material but the repetition wore me down. The anchoring and framing chapters were excellent. Will probably finish someday."
+    },
+    {
+        "title": "Atomic Habits",
+        "author": "James Clear",
+        "date": "Mar 15, 2024",
+        "rating": 3,
+        "status": "finished",
+        "thoughts": "Could have been a blog post. But the blog post would have been really good. The habit stacking idea stuck with me more than I expected."
+    }
+]

@@ -1,0 +1,44 @@
+{
+    "quadrants": ["Languages", "Frameworks", "Infrastructure", "Data & AI"],
+    "rings": ["Adopt", "Trial", "Assess", "Hold"],
+    "colors": ["#1DD1A1", "#FFA502", "#54A0FF", "#FD79A8"],
+    "items": [
+        { "id": 1,  "name": "Python",         "quadrant": 0, "ring": 0 },
+        { "id": 2,  "name": "Java",           "quadrant": 0, "ring": 0 },
+        { "id": 3,  "name": "JavaScript",     "quadrant": 0, "ring": 0 },
+        { "id": 4,  "name": "TypeScript",     "quadrant": 0, "ring": 0 },
+        { "id": 5,  "name": "Go",             "quadrant": 0, "ring": 1 },
+        { "id": 6,  "name": "Rust",           "quadrant": 0, "ring": 2 },
+        { "id": 7,  "name": "SQL",            "quadrant": 0, "ring": 0 },
+
+        { "id": 8,  "name": "FastAPI",        "quadrant": 1, "ring": 0 },
+        { "id": 9,  "name": "React",          "quadrant": 1, "ring": 0 },
+        { "id": 10, "name": "Django",         "quadrant": 1, "ring": 0 },
+        { "id": 11, "name": "Express",        "quadrant": 1, "ring": 0 },
+        { "id": 12, "name": "Svelte",         "quadrant": 1, "ring": 2 },
+        { "id": 13, "name": "Vue",            "quadrant": 1, "ring": 1 },
+        { "id": 14, "name": "Next.js",        "quadrant": 1, "ring": 1 },
+        { "id": 15, "name": "Angular",        "quadrant": 1, "ring": 3 },
+
+        { "id": 16, "name": "Docker",         "quadrant": 2, "ring": 0 },
+        { "id": 17, "name": "Kubernetes",     "quadrant": 2, "ring": 0 },
+        { "id": 18, "name": "AWS",            "quadrant": 2, "ring": 0 },
+        { "id": 19, "name": "Terraform",      "quadrant": 2, "ring": 1 },
+        { "id": 20, "name": "GitHub Actions", "quadrant": 2, "ring": 0 },
+        { "id": 21, "name": "Datadog",        "quadrant": 2, "ring": 0 },
+        { "id": 22, "name": "Sentry",         "quadrant": 2, "ring": 0 },
+        { "id": 23, "name": "Grafana",        "quadrant": 2, "ring": 1 },
+        { "id": 24, "name": "Jenkins",        "quadrant": 2, "ring": 2 },
+
+        { "id": 25, "name": "PostgreSQL",     "quadrant": 3, "ring": 0 },
+        { "id": 26, "name": "MongoDB",        "quadrant": 3, "ring": 0 },
+        { "id": 27, "name": "Redis",          "quadrant": 3, "ring": 0 },
+        { "id": 28, "name": "S3",             "quadrant": 3, "ring": 0 },
+        { "id": 29, "name": "Vector DBs",     "quadrant": 3, "ring": 1 },
+        { "id": 30, "name": "OpenAI API",     "quadrant": 3, "ring": 0 },
+        { "id": 31, "name": "HuggingFace",    "quadrant": 3, "ring": 0 },
+        { "id": 32, "name": "LangChain",      "quadrant": 3, "ring": 2 },
+        { "id": 33, "name": "LlamaIndex",     "quadrant": 3, "ring": 1 },
+        { "id": 34, "name": "AutoML",         "quadrant": 3, "ring": 3 }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "updated": "Feb 2026",
+    "items": [
+        { "label": "Reading", "value": "The Staff Engineer's Path — Tanya Reilly" },
+        { "label": "Building", "value": "AI infrastructure at Ema" },
+        { "label": "Side quest", "value": "This portfolio, apparently" },
+        { "label": "Thinking", "value": "Whether LLM evals will ever feel solved" },
+        { "label": "Listening", "value": "A lot of Khruangbin lately" }
+    ]
+}

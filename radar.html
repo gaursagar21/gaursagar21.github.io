@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Radar - Sagar Gaur</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">SG</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="blog.html">Writing</a>
+                <a href="about.html">About</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">[dark]</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="radar-layout">
+            <div class="radar-lists-left"></div>
+            
+            <div class="radar-wrapper">
+                <div class="radar-grid">
+                    <canvas id="quadrant0" class="quadrant-canvas top-left"></canvas>
+                    <canvas id="quadrant1" class="quadrant-canvas top-right"></canvas>
+                    <canvas id="quadrant2" class="quadrant-canvas bottom-left"></canvas>
+                    <canvas id="quadrant3" class="quadrant-canvas bottom-right"></canvas>
+                </div>
+            </div>
+            
+            <div class="radar-lists-right"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Sagar Gaur</p>
+        <div class="footer-links">
+            <a href="radar.html">Tech Radar</a>
+            <a href="art.html">Artwork</a>
+            <a href="photos.html">Photos</a>
+            <a href="books.html">Books</a>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script src="radar-quadrants.js"></script>
+    <script src="focus-mode.js"></script>
+</body>
+</html>

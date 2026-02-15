@@ -1,0 +1,6 @@
+[
+    { "text": "Build this website", "status": "done" },
+    { "text": "Organise music playlist", "status": "in_progress" },
+    { "text": "Build an LLM from scratch", "status": "todo" },
+    { "text": "Scan my artworks", "status": "todo" }
+]

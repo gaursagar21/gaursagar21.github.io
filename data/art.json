@@ -1,5 +1,7 @@
 [
-    { "title": "Solitude",        "medium": "Digital, 2026",       "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600&q=80" },
-    { "title": "Fragment",        "medium": "Ink on paper, 2025",  "image": "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=600&q=80" },
-    { "title": "Untitled #4",     "medium": "Charcoal, 2024",     "image": "https://images.unsplash.com/photo-1482160549825-59d1b23cb208?w=600&q=80" }
+    { "title": "Country Side", "medium": "Acrylic on Canvas", "image": "artwork/countryside.jpg" },
+    { "title": "Avatar", "medium": "Acrylic on Canvas", "image": "artwork/avatar.png" },
+    { "title": "Flight", "medium": "Ink Sketch", "image": "artwork/flight.jpeg" },
+    { "title": "Ice Cream", "medium": "Pencil", "image": "artwork/icecream.jpeg" },
+    { "title": "Tower", "medium": "Ink Sketch", "image": "artwork/tower.jpg" }
 ]

@@ -22,6 +22,11 @@
     <main>
         <section class="page-header">
             <h1>Books</h1>
+            <p class="books-meta">
+                <a href="https://www.goodreads.com/user/show/40907614-sagar-gaur" target="_blank" rel="noopener noreferrer">Goodreads</a>
+                <span class="books-meta-sep">·</span>
+                <span id="books-meta-total">Loading…</span>
+            </p>
         </section>
 
         <section class="bookshelf" id="bookshelf">
@@ -40,6 +45,7 @@
     </footer>
     
     <script src="script.js"></script>
+    <script src="enhancements.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const container = document.getElementById('bookshelf');
@@ -48,18 +54,63 @@
                 const books = await res.json();
 
                 const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                const monthIndex = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+
+                function parseLooseDate(input) {
+                    const s = (input || '').trim();
+                    if (!s) return { date: null, year: NaN, month: NaN, day: NaN, precision: 'unknown' };
+
+                    // Formats we see from Goodreads export:
+                    // - "Dec 26, 2025"
+                    // - "Dec 02, 2025"
+                    // - "May 2025"
+                    // - "Feb 2018"
+                    const mDay = s.match(/^([A-Za-z]{3})\s+(\d{1,2}),\s*(\d{4})$/);
+                    if (mDay) {
+                        const mon = monthIndex[mDay[1]];
+                        const day = Number(mDay[2]);
+                        const year = Number(mDay[3]);
+                        if (mon >= 0 && year) return { date: new Date(year, mon, day), year, month: mon, day, precision: 'day' };
+                    }
+
+                    const mMonth = s.match(/^([A-Za-z]{3})\s+(\d{4})$/);
+                    if (mMonth) {
+                        const mon = monthIndex[mMonth[1]];
+                        const year = Number(mMonth[2]);
+                        if (mon >= 0 && year) return { date: new Date(year, mon, 1), year, month: mon, day: 1, precision: 'month' };
+                    }
+
+                    const mYear = s.match(/^(\d{4})$/);
+                    if (mYear) {
+                        const year = Number(mYear[1]);
+                        return { date: new Date(year, 0, 1), year, month: 0, day: 1, precision: 'year' };
+                    }
+
+                    return { date: null, year: NaN, month: NaN, day: NaN, precision: 'unknown' };
+                }
+
                 const parsed = books.map(b => {
-                    const d = new Date(b.date);
-                    return { ...b, _date: d, _year: d.getFullYear(), _month: d.getMonth(), _day: d.getDate() };
+                    const p = parseLooseDate(b.date);
+                    return { ...b, _date: p.date, _year: p.year, _month: p.month, _day: p.day, _precision: p.precision };
                 }).sort((a, b) => b._date - a._date);
 
                 const grouped = {};
+                const unknown = [];
                 parsed.forEach(b => {
+                    if (!b._date || isNaN(b._date)) {
+                        unknown.push(b);
+                        return;
+                    }
                     if (!grouped[b._year]) grouped[b._year] = [];
                     grouped[b._year].push(b);
                 });
 
                 container.innerHTML = '';
+
+                // Subtle meta
+                const totalEl = document.getElementById('books-meta-total');
+                if (totalEl) totalEl.textContent = `${books.length} books`;
+
                 const years = Object.keys(grouped).sort((a, b) => b - a);
 
                 years.forEach(year => {
@@ -68,7 +119,7 @@
 
                     const h2 = document.createElement('h2');
                     h2.className = 'book-year';
-                    h2.textContent = year;
+                    h2.textContent = `${year} (${grouped[year].length})`;
                     section.appendChild(h2);
 
                     grouped[year].forEach(book => {
@@ -108,30 +159,69 @@
 
                         const dateEl = document.createElement('span');
                         dateEl.className = 'book-date';
-                        dateEl.textContent = `${book._day} ${monthNames[book._month]} ${book._year}`;
+                        if (book._precision === 'day') {
+                            dateEl.textContent = `${book._day} ${monthNames[book._month]} ${book._year}`;
+                        } else if (book._precision === 'month') {
+                            dateEl.textContent = `${monthNames[book._month]} ${book._year}`;
+                        } else if (book._precision === 'year') {
+                            dateEl.textContent = `${book._year}`;
+                        } else {
+                            dateEl.textContent = '';
+                        }
                         meta.appendChild(dateEl);
 
                         entry.appendChild(head);
                         entry.appendChild(meta);
-
-                        if (book.thoughts) {
-                            const thoughts = document.createElement('div');
-                            thoughts.className = 'book-thoughts';
-                            const p = document.createElement('p');
-                            p.textContent = book.thoughts;
-                            thoughts.appendChild(p);
-                            entry.appendChild(thoughts);
-
-                            entry.addEventListener('click', () => {
-                                thoughts.classList.toggle('open');
-                            });
-                        }
 
                         section.appendChild(entry);
                     });
 
                     container.appendChild(section);
                 });
+
+                if (unknown.length) {
+                    const section = document.createElement('div');
+                    section.className = 'book-year-section';
+
+                    const h2 = document.createElement('h2');
+                    h2.className = 'book-year';
+                    h2.textContent = `Unknown (${unknown.length})`;
+                    section.appendChild(h2);
+
+                    unknown.forEach(book => {
+                        const entry = document.createElement('div');
+                        entry.className = 'book-entry';
+                        if (book.status) entry.classList.add('status-' + book.status);
+
+                        const head = document.createElement('div');
+                        head.className = 'book-head';
+
+                        const title = document.createElement('span');
+                        title.className = 'book-title';
+                        title.textContent = book.title;
+
+                        const rating = document.createElement('span');
+                        rating.className = 'book-rating';
+                        rating.textContent = '★'.repeat(book.rating) + '☆'.repeat(5 - book.rating);
+
+                        head.appendChild(title);
+                        head.appendChild(rating);
+
+                        const meta = document.createElement('div');
+                        meta.className = 'book-meta';
+
+                        const author = document.createElement('span');
+                        author.className = 'book-author';
+                        author.textContent = book.author;
+                        meta.appendChild(author);
+
+                        entry.appendChild(head);
+                        entry.appendChild(meta);
+                        section.appendChild(entry);
+                    });
+
+                    container.appendChild(section);
+                }
             } catch (e) {
                 container.innerHTML = '<p>Could not load books.</p>';
                 console.error(e);

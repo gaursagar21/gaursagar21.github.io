@@ -26,40 +26,39 @@
 
         <section class="about-content">
             <div class="content-box">
-                <p>I'm Sagar — a backend engineer who likes building things that scale and occasionally break in interesting ways.</p>
+                <p>I'm Sagar — a backend engineer focused on building scalable, reliable systems.</p>
                 
-                <p>Currently at <a href="https://www.ema.co/" target="_blank">Ema</a>, working on AI infrastructure. Before that, I was the founding backend engineer at Markov ML, where I built an agentic AI platform from scratch — the kind of zero-to-one work where you're writing the architecture doc and the code in the same week.</p>
+                <p>Currently at <a href="https://www.ema.co/" target="_blank" rel="noopener noreferrer">Ema</a> on the <a href="https://www.ema.co/customer-experience" target="_blank" rel="noopener noreferrer">Customer Experience (CX)</a> team, building the systems and infrastructure that keep AI agents running in production. Most of my work is around scalability and reliability: high-volume data ingestion, handling (and preventing) messy failure modes, and making a non-deterministic system shippable. I’ve also made a few minor contributions on the voice side. Before that, I was the first backend engineer at Markov ML, where I built a no-code AI platform from the ground up.</p>
                 
-                <p>I spent my earlier years at MindTickle, joining during Series B and sticking around through their unicorn run. Mostly I was the person called when something needed to handle 100x more traffic by next quarter.</p>
+                <p>I spent my earlier years at MindTickle, joining right after they raised their Series B and leaving after they'd hit unicorn status. I worked on backend systems, scaling, and reliability as the product (and traffic) grew.</p>
 
                 <h2>The Timeline</h2>
                 <ul>
-                    <li>Ema — Software Engineer (2025 → now)</li>
-                    <li>Markov ML — Founding Engineer & Tech Lead (2021 → 2025)</li>
-                    <li>MindTickle — SDE II (2018 → 2021)</li>
-                    <li>Google Summer of Code — Open Chemistry (2017)</li>
-                    <li>IIIT Hyderabad — MS Computational Science + BTech CS</li>
+                    <li>Ema — Senior Software Engineer, BE + AI/LLM systems (Jan 2025 → now)</li>
+                    <li>Markov ML — Founding Engineer & Tech Lead (Oct 2021 → Dec 2024)</li>
+                    <li>MindTickle — Software Engineer II (Jun 2018 → Oct 2021)</li>
+                    <li>Google Summer of Code — Open Chemistry (Summer 2017)</li>
+                    <li>IIIT Hyderabad — Dual Degree: B.Tech + M.S. Computational Science (2013 → 2018)</li>
                 </ul>
 
                 <h2>What I Reach For</h2>
                 <ul>
-                    <li>Python, Java, Node.js for the backend</li>
-                    <li>AWS, Docker, Kubernetes for keeping things running</li>
-                    <li>PostgreSQL, MongoDB, Redis for storing things</li>
-                    <li>LLMs, Vector DBs, ML Pipelines for the fun stuff</li>
+                    <li>Languages: Python, Go</li>
+                    <li>Infrastructure: Kubernetes, Docker, AWS, GCP, Temporal, Airflow</li>
+                    <li>Databases: PostgreSQL, MongoDB, Redis, ClickHouse</li>
+                    <li>Frameworks: FastAPI, gRPC, Kubeflow, MLFlow</li>
                 </ul>
 
-                <h2>Things I'm Not Good At</h2>
-                <ul>
-                    <li>Design — I can tell when something looks off, but ask me to fix it and we're in trouble</li>
-                    <li>CSS animations — anything beyond a hover transition and I'm Googling</li>
-                    <li>Conference networking — I do better in small groups over coffee</li>
-                    <li>Saying no to side projects — my TODO list is a graveyard of ambition</li>
-                    <li>Writing tests first — I always mean to, and then I don't</li>
-                </ul>
+                <div class="todo-note" role="note" aria-label="Todo list">
+                    <div class="todo-note-title">TODO</div>
+                    <ul class="todo-note-list">
+                        <li class="is-todo"><span class="todo-box" aria-hidden="true"></span> Loading…</li>
+                    </ul>
+                </div>
 
                 <h2>Say Hi</h2>
                 <p>Find me on <a href="https://www.linkedin.com/in/sagar-gaur/" target="_blank">LinkedIn</a> or <a href="https://github.com/gaursagar21" target="_blank">GitHub</a>.</p>
+                <p>You can also reach out to me at gaursagar21 [at] gmail [dot] com</p>
             </div>
         </section>
     </main>
@@ -75,6 +74,63 @@
     </footer>
     
     <script src="script.js"></script>
+    <script src="enhancements.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const note = document.querySelector('.todo-note');
+            const list = document.querySelector('.todo-note-list');
+            if (!note || !list) return;
+
+            const statusClass = (s) => {
+                const v = String(s || '').toLowerCase();
+                if (v === 'done' || v === 'completed') return 'is-done';
+                if (v === 'in_progress' || v === 'in-progress' || v === 'progress' || v === 'inprogress') return 'is-progress';
+                return 'is-todo';
+            };
+
+            const statusMark = (cls) => {
+                if (cls === 'is-done') return '✓';
+                if (cls === 'is-progress') return '~';
+                return '';
+            };
+
+            try {
+                // Resolve relative URL safely (works under /about.html, subpaths, etc.)
+                const url = new URL('data/todos.json', window.location.href).toString();
+                const res = await fetch(url, { cache: 'no-store' });
+                if (!res.ok) throw new Error('todos.json not ok');
+                const todos = await res.json();
+
+                list.innerHTML = '';
+                (Array.isArray(todos) ? todos : []).forEach((t) => {
+                    const li = document.createElement('li');
+                    const cls = statusClass(t.status);
+                    li.className = cls;
+
+                    const box = document.createElement('span');
+                    box.className = 'todo-box';
+                    box.setAttribute('aria-hidden', 'true');
+                    box.textContent = statusMark(cls);
+
+                    li.appendChild(box);
+                    li.appendChild(document.createTextNode(' ' + (t.text || '')));
+                    list.appendChild(li);
+                });
+
+                if (!list.children.length) {
+                    list.innerHTML = '<li class="is-todo"><span class="todo-box" aria-hidden="true"></span> No todos yet.</li>';
+                }
+            } catch (e) {
+                // Common case: opened as file:// — fetch is blocked by browser security.
+                if (window.location.protocol === 'file:') {
+                    list.innerHTML = '<li class="is-todo"><span class="todo-box" aria-hidden="true"></span> Open this site via a local server to load todo.</li>';
+                } else {
+                    list.innerHTML = '<li class="is-todo"><span class="todo-box" aria-hidden="true"></span> Could not load todo.</li>';
+                }
+                console.error(e);
+            }
+        });
+    </script>
     <script src="focus-mode.js"></script>
 </body>
 </html>

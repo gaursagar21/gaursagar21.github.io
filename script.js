@@ -40,8 +40,28 @@ function applyRandomColors() {
         tag.style.color = '#000';
     });
 
-    document.querySelectorAll('.now-label').forEach(el => {
-        el.style.color = getRandomColor();
+    applyNowLabelColors();
+}
+
+function applyNowLabelColors() {
+    const labels = Array.from(document.querySelectorAll('.now-label'));
+    if (!labels.length) return;
+
+    // Normal mode: keep all "Now" headers the same color.
+    // Konami / rainbow mode: keep it loud and varied.
+    const isKonami = document.documentElement.classList.contains('konami-mode');
+    const isRainbow = document.documentElement.getAttribute('data-rainbow') === 'true';
+
+    if (isKonami || isRainbow) {
+        labels.forEach(el => {
+            el.style.color = getRandomColor();
+        });
+        return;
+    }
+
+    const c = getRandomColor();
+    labels.forEach(el => {
+        el.style.color = c;
     });
 }
 
@@ -152,6 +172,15 @@ function createPalette() {
         } else if (e.key === 'Enter') {
             e.preventDefault();
             const active = items[paletteSel];
+            if (active?.dataset.secret) {
+                closePalette();
+                if (active.dataset.secret === 'coffee') showToast('☕ Built with coffee');
+                if (active.dataset.secret === 'rainbow') startRainbowMode();
+                if (active.dataset.secret === 'paint') showToast('Hold Shift and drag anywhere');
+                if (active.dataset.secret === 'matrix' && typeof runMatrix === 'function') runMatrix();
+                if (active.dataset.secret === 'konami') triggerKonamiMode();
+                return;
+            }
             if (active?.dataset.url) window.location.href = active.dataset.url;
         } else if (e.key === 'Escape') {
             closePalette();
@@ -180,7 +209,22 @@ function renderPaletteResults(query, container) {
             .filter(item => item.score > 0)
             .sort((a, b) => b.score - a.score);
     }
-    filtered = filtered.slice(0, 9);
+    // Hidden easter eggs: only show when you know what to type.
+    const secrets = [];
+    if (q === 'coffee') secrets.push({ type: 'secret', title: '☕ Coffee break', secret: 'coffee' });
+    if (q === 'rainbow') secrets.push({ type: 'secret', title: '🌈 Rainbow mode', secret: 'rainbow' });
+    if (q === 'konami') secrets.push({ type: 'secret', title: '🕹 Konami Mode', secret: 'konami' });
+    if (q === 'matrix') secrets.push({ type: 'secret', title: '🟩 Matrix rain', secret: 'matrix' });
+    if (q === 'egg' || q === 'eggs' || q === 'easter' || q === 'easteregg' || q === 'easter-egg') {
+        secrets.push(
+            { type: 'secret', title: '🕹 Konami Mode', secret: 'konami' },
+            { type: 'secret', title: '🟩 Matrix rain', secret: 'matrix' },
+            { type: 'secret', title: '🌈 Rainbow mode', secret: 'rainbow' },
+            { type: 'secret', title: '🎨 Paint trail (Shift + drag)', secret: 'paint' },
+            { type: 'secret', title: '☕ Coffee break', secret: 'coffee' }
+        );
+    }
+    filtered = [...secrets, ...filtered].slice(0, 9);
 
     container.innerHTML = '';
     if (filtered.length === 0) {
@@ -195,6 +239,7 @@ function renderPaletteResults(query, container) {
         const el = document.createElement('div');
         el.className = 'cmd-item' + (i === paletteSel ? ' active' : '');
         el.dataset.url = item.url || '';
+        if (item.secret) el.dataset.secret = item.secret;
 
         const type = document.createElement('span');
         type.className = 'cmd-type';
@@ -215,6 +260,15 @@ function renderPaletteResults(query, container) {
         }
 
         el.addEventListener('click', () => {
+            if (item.secret) {
+                closePalette();
+                if (item.secret === 'coffee') showToast('☕ Built with coffee');
+                if (item.secret === 'rainbow') startRainbowMode();
+                if (item.secret === 'paint') showToast('Hold Shift and drag anywhere');
+                if (item.secret === 'matrix' && typeof runMatrix === 'function') runMatrix();
+                if (item.secret === 'konami') triggerKonamiMode();
+                return;
+            }
             if (item.url) window.location.href = item.url;
         });
         el.addEventListener('mouseenter', () => {
@@ -250,14 +304,73 @@ function closePalette() {
 
 // Global keyboard listener
 document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        if (rainbowInterval) stopRainbowMode();
+        else closePalette();
+        return;
+    }
     if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.altKey) {
         const tag = document.activeElement?.tagName;
         if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement?.isContentEditable) return;
         e.preventDefault();
         openPalette();
     }
-    if (e.key === 'Escape') closePalette();
 });
+
+// ─── Secret palette & rainbow mode ────────────────────
+
+function showToast(message, durationMs) {
+    let el = document.getElementById('toast-egg');
+    if (!el) {
+        el = document.createElement('div');
+        el.id = 'toast-egg';
+        el.className = 'toast-egg';
+        document.body.appendChild(el);
+    }
+    el.textContent = message;
+    el.classList.add('show');
+    clearTimeout(el._tid);
+    el._tid = setTimeout(() => el.classList.remove('show'), durationMs || 2200);
+}
+
+let rainbowInterval = null;
+function startRainbowMode() {
+    if (rainbowInterval) return;
+    document.documentElement.setAttribute('data-rainbow', 'true');
+    rainbowInterval = setInterval(() => applyRandomColors(), 450);
+    showToast('🌈 Rainbow mode — press Esc to exit', 3000);
+}
+function stopRainbowMode() {
+    if (rainbowInterval) {
+        clearInterval(rainbowInterval);
+        rainbowInterval = null;
+    }
+    document.documentElement.removeAttribute('data-rainbow');
+}
+
+function triggerKonamiMode() {
+    // Prefer the full experience from enhancements.js if available
+    if (window.__sgEggs?.konami) {
+        window.__sgEggs.konami();
+        return;
+    }
+
+    // Fallback (in case enhancements.js is cached/failed to load)
+    startRainbowMode();
+    document.documentElement.classList.add('konami-mode');
+    showToast('KONAMI MODE', 2400);
+    clearTimeout(triggerKonamiMode._tid);
+    triggerKonamiMode._tid = setTimeout(() => {
+        document.documentElement.classList.remove('konami-mode');
+    }, 9000);
+}
+
+// Allow other scripts (konami / palette) to trigger rainbow mode
+window.__sgEggs = window.__sgEggs || {};
+window.__sgEggs.rainbow = {
+    start: startRainbowMode,
+    stop: stopRainbowMode,
+};
 
 // ─── Footer Hint ─────────────────────────────────────
 
@@ -316,6 +429,9 @@ async function loadNowSection() {
             updated.textContent = `Updated ${data.updated}`;
             container.appendChild(updated);
         }
+
+        // Now labels are created dynamically, so color them after render.
+        applyNowLabelColors();
     } catch (e) { /* now.json not available */ }
 }
 

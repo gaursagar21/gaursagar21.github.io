@@ -1,98 +1,709 @@
 [
     {
-        "title": "Designing Data-Intensive Applications",
-        "author": "Martin Kleppmann",
-        "date": "Jan 12, 2026",
-        "rating": 5,
-        "status": "finished",
-        "thoughts": "The bible of distributed systems. Every chapter made me rethink something I thought I understood. The section on consistency models alone is worth the price."
+        "title": "The Gods Themselves",
+        "author": "Isaac Asimov",
+        "date": "Feb 2026",
+        "rating": 0,
+        "status": "reading"
     },
     {
-        "title": "The Staff Engineer's Path",
-        "author": "Tanya Reilly",
-        "date": "Feb 1, 2026",
+        "title": "Nightfall and Other Stories",
+        "author": "Isaac Asimov",
+        "date": "Feb 2026",
+        "rating": 0,
+        "status": "reading"
+    },
+    {
+        "title": "Colorless Tsukuru Tazaki and His Years of Pilgrimage",
+        "author": "Haruki Murakami",
+        "date": "Dec 26, 2025",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "The Elephant Vanishes",
+        "author": "Haruki Murakami",
+        "date": "Oct 10, 2025",
         "rating": 4,
-        "status": "reading",
-        "thoughts": "Halfway through. Already changed how I think about influence vs authority. The 'being glue' framing hit hard."
+        "status": "finished"
+    },
+    {
+        "title": "After Dark",
+        "author": "Haruki Murakami",
+        "date": "Dec 02, 2025",
+        "rating": 5,
+        "status": "finished"
     },
     {
         "title": "Project Hail Mary",
         "author": "Andy Weir",
-        "date": "Jan 28, 2026",
+        "date": "Sep 27, 2025",
         "rating": 5,
-        "status": "finished",
-        "thoughts": "Read it in two sittings. The friendship at the center of this book is one of the best I've encountered in sci-fi. Funny, tense, genuinely moving."
+        "status": "finished"
     },
     {
-        "title": "A Philosophy of Software Design",
-        "author": "John Ousterhout",
-        "date": "Nov 5, 2025",
-        "rating": 4,
-        "status": "finished",
-        "thoughts": "Short, opinionated, useful. 'Complexity is incremental' should be tattooed on every codebase. Disagree with some of the deep module takes but the core ideas are solid."
+        "title": "The House in the Cerulean Sea (Cerulean Chronicles, #1)",
+        "author": "T.J. Klune",
+        "date": "Aug 27, 2025",
+        "rating": 0,
+        "status": "to-read"
     },
     {
-        "title": "The Pragmatic Programmer",
-        "author": "Hunt & Thomas",
-        "date": "Sep 20, 2025",
-        "rating": 4,
-        "status": "finished",
-        "thoughts": "Re-read the 20th anniversary edition. Some advice feels obvious now — which probably means it shaped how I think without me noticing."
+        "title": "Remarkably Bright Creatures",
+        "author": "Shelby Van Pelt",
+        "date": "Aug 27, 2025",
+        "rating": 0,
+        "status": "to-read"
     },
     {
-        "title": "Klara and the Sun",
-        "author": "Kazuo Ishiguro",
-        "date": "Jul 14, 2025",
+        "title": "One Hundred Years of Solitude",
+        "author": "Gabriel García Márquez",
+        "date": "Aug 16, 2025",
+        "rating": 0,
+        "status": "reading"
+    },
+    {
+        "title": "Norwegian Wood",
+        "author": "Haruki Murakami",
+        "date": "Aug 15, 2025",
+        "rating": 0,
+        "status": "finished"
+    },
+    {
+        "title": "1Q84 (1Q84, #1-3)",
+        "author": "Haruki Murakami",
+        "date": "May 2025",
         "rating": 5,
-        "status": "finished",
-        "thoughts": "Quietly devastating. Ishiguro writes AI with more empathy than most people write humans. The unreliable narration through Klara's limited understanding is masterful."
+        "status": "finished"
     },
     {
-        "title": "The Phoenix Project",
-        "author": "Kim, Behr & Spafford",
-        "date": "Apr 3, 2025",
+        "title": "The Wind-Up Bird Chronicle",
+        "author": "Haruki Murakami",
+        "date": "Jun 26, 2025",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Goodnight Punpun Omnibus, Vol. 1",
+        "author": "Inio Asano",
+        "date": "Jan 2024",
+        "rating": 0,
+        "status": "finished"
+    },
+    {
+        "title": "Factory Summers",
+        "author": "Guy Delisle",
+        "date": "Jan 2024",
+        "rating": 0,
+        "status": "finished"
+    },
+    {
+        "title": "Table for Two",
+        "author": "Amor Towles",
+        "date": "Jan 2025",
+        "rating": 0,
+        "status": "finished"
+    },
+    {
+        "title": "Rule of Wolves (King of Scars, #2)",
+        "author": "Leigh Bardugo",
+        "date": "Jan 2024",
+        "rating": 0,
+        "status": "finished"
+    },
+    {
+        "title": "King of Scars (King of Scars, #1)",
+        "author": "Leigh Bardugo",
+        "date": "Jan 2024",
+        "rating": 0,
+        "status": "finished"
+    },
+    {
+        "title": "The City and Its Uncertain Walls",
+        "author": "Haruki Murakami",
+        "date": "Jan 2025",
+        "rating": 0,
+        "status": "finished"
+    },
+    {
+        "title": "Kafka on the Shore",
+        "author": "Haruki Murakami",
+        "date": "Mar 22, 2025",
+        "rating": 0,
+        "status": "finished"
+    },
+    {
+        "title": "Sum: Forty Tales from the Afterlives",
+        "author": "David Eagleman",
+        "date": "Jan 2025",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "The Girl on the Train",
+        "author": "Paula Hawkins",
+        "date": "Mar 08, 2024",
         "rating": 3,
-        "status": "finished",
-        "thoughts": "Good ideas wrapped in mediocre fiction. If you've lived through a bad deployment pipeline, you'll recognize every character. The DevOps principles land even if the prose doesn't."
+        "status": "finished"
     },
     {
-        "title": "Exhalation",
-        "author": "Ted Chiang",
-        "date": "Feb 18, 2025",
+        "title": "Yellowface",
+        "author": "R.F. Kuang",
+        "date": "Dec 27, 2023",
+        "rating": 0,
+        "status": "to-read"
+    },
+    {
+        "title": "Penguin Book of Indian Ghost Stories",
+        "author": "Ruskin Bond",
+        "date": "Dec 2023",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Aurora: CV-01 (The Frontiers Saga #1)",
+        "author": "Ryk Brown",
+        "date": "Dec 27, 2023",
+        "rating": 3,
+        "status": "finished"
+    },
+    {
+        "title": "Crooked Kingdom (Six of Crows, #2)",
+        "author": "Leigh Bardugo",
+        "date": "Dec 27, 2023",
         "rating": 5,
-        "status": "finished",
-        "thoughts": "Every story is a thought experiment that refuses to stay abstract. 'The Lifecycle of Software Objects' is the most honest thing written about AI relationships."
+        "status": "finished"
     },
     {
-        "title": "System Design Interview",
-        "author": "Alex Xu",
-        "date": "Oct 22, 2024",
-        "rating": 3,
-        "status": "finished",
-        "thoughts": "Useful as a reference, not great as a read. Good for pattern recognition before interviews. Wouldn't revisit."
-    },
-    {
-        "title": "The Three-Body Problem",
-        "author": "Cixin Liu",
-        "date": "Aug 10, 2024",
+        "title": "Tomorrow, and Tomorrow, and Tomorrow",
+        "author": "Gabrielle Zevin",
+        "date": "May 11, 2023",
         "rating": 4,
-        "status": "finished",
-        "thoughts": "The scale of imagination here is unmatched. The Dark Forest theory changed how I think about the Fermi paradox. Characters are thin but the ideas are enormous."
+        "status": "finished"
     },
     {
-        "title": "Thinking, Fast and Slow",
-        "author": "Daniel Kahneman",
-        "date": "May 6, 2024",
+        "title": "The Almanack of Naval Ravikant: A Guide to Wealth and Happiness",
+        "author": "Eric Jorgenson",
+        "date": "Oct 30, 2022",
+        "rating": 2,
+        "status": "finished"
+    },
+    {
+        "title": "The Silmarillion",
+        "author": "J.R.R. Tolkien",
+        "date": "Oct 27, 2022",
+        "rating": 0,
+        "status": "reading"
+    },
+    {
+        "title": "Tuesdays with Morrie: An Old Man, a Young Man, and Life's Greatest Lesson",
+        "author": "Mitch Albom",
+        "date": "Oct 21, 2022",
         "rating": 4,
-        "status": "abandoned",
-        "thoughts": "Got through about 60%. Fascinating material but the repetition wore me down. The anchoring and framing chapters were excellent. Will probably finish someday."
+        "status": "finished"
     },
     {
-        "title": "Atomic Habits",
-        "author": "James Clear",
-        "date": "Mar 15, 2024",
+        "title": "Six of Crows (Six of Crows, #1)",
+        "author": "Leigh Bardugo",
+        "date": "Oct 21, 2022",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "The Hard Thing About Hard Things: Building a Business When There Are No Easy Answers―Straight Talk on the Challenges of Entrepreneurship",
+        "author": "Ben Horowitz",
+        "date": "Feb 2018",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "Furiously Happy: A Funny Book About Horrible Things",
+        "author": "Jenny Lawson",
+        "date": "Oct 30, 2022",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Heidegger and a Hippo Walk Through Those Pearly Gates: Using Philosophy (and Jokes!) to Explore Life, Death, the Afterlife, and Everything in Between",
+        "author": "Daniel Klein",
+        "date": "Jun 03, 2022",
+        "rating": 0,
+        "status": "to-read"
+    },
+    {
+        "title": "Circe",
+        "author": "Madeline Miller",
+        "date": "Jun 05, 2022",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "The Last Days of Night",
+        "author": "Graham Moore",
+        "date": "Apr 25, 2022",
+        "rating": 0,
+        "status": "to-read"
+    },
+    {
+        "title": "The Book of Why: The New Science of Cause and Effect",
+        "author": "Judea Pearl",
+        "date": "Apr 25, 2022",
+        "rating": 0,
+        "status": "to-read"
+    },
+    {
+        "title": "Dark Matter",
+        "author": "Blake Crouch",
+        "date": "Apr 24, 2022",
         "rating": 3,
-        "status": "finished",
-        "thoughts": "Could have been a blog post. But the blog post would have been really good. The habit stacking idea stuck with me more than I expected."
+        "status": "finished"
+    },
+    {
+        "title": "Logicomix: An Epic Search for Truth",
+        "author": "Apostolos K. Doxiadis",
+        "date": "Oct 27, 2022",
+        "rating": 0,
+        "status": "finished"
+    },
+    {
+        "title": "A Man Called Ove",
+        "author": "Fredrik Backman",
+        "date": "Apr 13, 2022",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "Brave New World",
+        "author": "Aldous Huxley",
+        "date": "Mar 29, 2022",
+        "rating": 3,
+        "status": "finished"
+    },
+    {
+        "title": "Lore Olympus: Volume One (Lore Olympus, #1)",
+        "author": "Rachel Smythe",
+        "date": "Jan 03, 2022",
+        "rating": 0,
+        "status": "to-read"
+    },
+    {
+        "title": "Crying in H Mart",
+        "author": "Michelle Zauner",
+        "date": "Jan 03, 2022",
+        "rating": 0,
+        "status": "to-read"
+    },
+    {
+        "title": "Comics for a Strange World: A Book of Poorly Drawn Lines (Poorly Drawn Lines, #2)",
+        "author": "Reza Farazmand",
+        "date": "Dec 26, 2021",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "The Stationery Shop",
+        "author": "Marjan Kamali",
+        "date": "Dec 05, 2021",
+        "rating": 0,
+        "status": "to-read"
+    },
+    {
+        "title": "The Alchemist",
+        "author": "Paulo Coelho",
+        "date": "Nov 10, 2021",
+        "rating": 2,
+        "status": "finished"
+    },
+    {
+        "title": "Poorly Drawn Lines: Good Ideas and Amazing Stories (Poorly Drawn Lines, #1)",
+        "author": "Reza Farazmand",
+        "date": "Sep 23, 2021",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "Living with Intensity",
+        "author": "Susan Daniels",
+        "date": "Sep 20, 2021",
+        "rating": 0,
+        "status": "to-read"
+    },
+    {
+        "title": "Good Strategy Bad Strategy: The Difference and Why It Matters",
+        "author": "Richard P. Rumelt",
+        "date": "Dec 25, 2021",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "Thinking In Systems: A Primer",
+        "author": "Donella H. Meadows",
+        "date": "Sep 01, 2021",
+        "rating": 0,
+        "status": "to-read"
+    },
+    {
+        "title": "Man's Search for Meaning",
+        "author": "Viktor E. Frankl",
+        "date": "Aug 27, 2021",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "The Forest of Enchantments",
+        "author": "Chitra Banerjee Divakaruni",
+        "date": "Sep 11, 2021",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Looking for Alaska",
+        "author": "John Green",
+        "date": "Jul 19, 2021",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Turtles All the Way Down",
+        "author": "John Green",
+        "date": "Jul 19, 2021",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "Paper Towns",
+        "author": "John Green",
+        "date": "Jul 19, 2021",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "Staff Engineer: Leadership Beyond the Management Track",
+        "author": "Will Larson",
+        "date": "Jun 25, 2021",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "The Anthropocene Reviewed: Essays on a Human-Centered Planet",
+        "author": "John Green",
+        "date": "Jul 21, 2021",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "Dune (Dune, #1)",
+        "author": "Frank Herbert",
+        "date": "Jun 21, 2021",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "The Complete Maus",
+        "author": "Art Spiegelman",
+        "date": "Mar 19, 2022",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Educated",
+        "author": "Tara Westover",
+        "date": "Mar 19, 2021",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "What If?: Serious Scientific Answers to Absurd Hypothetical Questions",
+        "author": "Randall Munroe",
+        "date": "Mar 05, 2021",
+        "rating": 0,
+        "status": "finished"
+    },
+    {
+        "title": "What I Talk About When I Talk About Running",
+        "author": "Haruki Murakami",
+        "date": "Mar 05, 2021",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Red Notice: A True Story of High Finance, Murder, and One Man's Fight for Justice",
+        "author": "Bill Browder",
+        "date": "Mar 03, 2021",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "Deep Work: Rules for Focused Success in a Distracted World",
+        "author": "Cal Newport",
+        "date": "Mar 01, 2021",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "Pen and Ink Drawing: A Simple Guide",
+        "author": "Alphonso Dunn",
+        "date": "Mar 01, 2021",
+        "rating": 0,
+        "status": "finished"
+    },
+    {
+        "title": "When to Rob a Bank: The Freakopedia",
+        "author": "Steven D. Levitt",
+        "date": "Feb 24, 2021",
+        "rating": 3,
+        "status": "finished"
+    },
+    {
+        "title": "The Psychology of Money: Timeless Lessons on Wealth, Greed, and Happiness",
+        "author": "Morgan Housel",
+        "date": "Feb 21, 2021",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "The Beekeeper of Aleppo",
+        "author": "Christy Lefteri",
+        "date": "Feb 11, 2021",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "I Will Never See the World Again",
+        "author": "Ahmet Altan",
+        "date": "Jan 30, 2021",
+        "rating": 0,
+        "status": "reading"
+    },
+    {
+        "title": "The Complete Persepolis",
+        "author": "Marjane Satrapi",
+        "date": "Jan 26, 2021",
+        "rating": 0,
+        "status": "reading"
+    },
+    {
+        "title": "The Midnight Library (The Midnight World, #1)",
+        "author": "Matt Haig",
+        "date": "Jan 28, 2021",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "A Gentleman in Moscow",
+        "author": "Amor Towles",
+        "date": "Jan 18, 2021",
+        "rating": 0,
+        "status": "to-read"
+    },
+    {
+        "title": "Anxious People",
+        "author": "Fredrik Backman",
+        "date": "Jan 15, 2021",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "Murder on the Orient Express (Hercule Poirot, #10)",
+        "author": "Agatha Christie",
+        "date": "Apr 28, 2020",
+        "rating": 3,
+        "status": "finished"
+    },
+    {
+        "title": "Life, the Universe and Everything (The Hitchhiker's Guide to the Galaxy, #3)",
+        "author": "Douglas Adams",
+        "date": "Jan 03, 2021",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "The Restaurant at the End of the Universe (The Hitchhiker's Guide to the Galaxy, #2)",
+        "author": "Douglas Adams",
+        "date": "Jan 03, 2021",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Flow: The Psychology of Optimal Experience",
+        "author": "Mihály Csíkszentmihályi",
+        "date": "May 17, 2020",
+        "rating": 3,
+        "status": "finished"
+    },
+    {
+        "title": "Pachinko",
+        "author": "Min Jin Lee",
+        "date": "Aug 07, 2020",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Eleanor Oliphant Is Completely Fine",
+        "author": "Gail Honeyman",
+        "date": "Nov 25, 2020",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Maybe You Should Talk to Someone: A Therapist, Her Therapist, and Our Lives Revealed",
+        "author": "Lori Gottlieb",
+        "date": "Nov 15, 2020",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "The Great Alone",
+        "author": "Kristin Hannah",
+        "date": "Dec 06, 2020",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "The Soul of a New Machine",
+        "author": "Tracy Kidder",
+        "date": "Dec 12, 2020",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Slaughterhouse-Five",
+        "author": "Kurt Vonnegut Jr.",
+        "date": "Dec 21, 2020",
+        "rating": 3,
+        "status": "finished"
+    },
+    {
+        "title": "Round Ireland with a Fridge",
+        "author": "Tony Hawks",
+        "date": "Jan 03, 2021",
+        "rating": 2,
+        "status": "finished"
+    },
+    {
+        "title": "Grit: The Power of Passion and Perseverance",
+        "author": "Angela Duckworth",
+        "date": "Jan 09, 2021",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "The Blue Umbrella",
+        "author": "Ruskin Bond",
+        "date": "Jan 2016",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Think Like a Freak",
+        "author": "Steven D. Levitt",
+        "date": "Jan 2016",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Do Androids Dream of Electric Sheep?",
+        "author": "Philip K. Dick",
+        "date": "May 21, 2016",
+        "rating": 0,
+        "status": "to-read"
+    },
+    {
+        "title": "The Foundation Trilogy",
+        "author": "Isaac Asimov",
+        "date": "May 21, 2016",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "Penpal",
+        "author": "Dathan Auerbach",
+        "date": "May 21, 2016",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "Three Men in a Boat (Three Men, #1)",
+        "author": "Jerome K. Jerome",
+        "date": "May 21, 2016",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Inferno (Robert Langdon, #4)",
+        "author": "Dan Brown",
+        "date": "May 21, 2016",
+        "rating": 2,
+        "status": "finished"
+    },
+    {
+        "title": "Robots and Empire (Robot, #4)",
+        "author": "Isaac Asimov",
+        "date": "May 21, 2016",
+        "rating": 0,
+        "status": "to-read"
+    },
+    {
+        "title": "The Naked Sun (Robot, #2)",
+        "author": "Isaac Asimov",
+        "date": "Jan 2016",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "The Hitchhiker’s Guide to the Galaxy (Hitchhiker's Guide to the Galaxy, #1)",
+        "author": "Douglas Adams",
+        "date": "Nov 2019",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "NoSleep eBook Vol. 1",
+        "author": "1000Vultures",
+        "date": "Dec 28, 2015",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "The Kite Runner",
+        "author": "Khaled Hosseini",
+        "date": "Jul 06, 2015",
+        "rating": 4,
+        "status": "finished"
+    },
+    {
+        "title": "Second Foundation (Foundation, #3)",
+        "author": "Isaac Asimov",
+        "date": "Jun 24, 2015",
+        "rating": 5,
+        "status": "finished"
+    },
+    {
+        "title": "Speedpost. Shobha D",
+        "author": "Shobhaa Dé",
+        "date": "Mar 05, 2015",
+        "rating": 2,
+        "status": "finished"
+    },
+    {
+        "title": "The Art of War",
+        "author": "Sun Tzu",
+        "date": "Mar 05, 2015",
+        "rating": 3,
+        "status": "finished"
+    },
+    {
+        "title": "David Copperfield",
+        "author": "Charles Dickens",
+        "date": "Mar 05, 2015",
+        "rating": 3,
+        "status": "finished"
+    },
+    {
+        "title": "Furiously Happy: A Funny Book About Horrible Things",
+        "author": "Jenny Lawson",
+        "date": "Feb 24, 2021",
+        "rating": 0,
+        "status": "finished"
     }
 ]

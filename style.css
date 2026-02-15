@@ -4,6 +4,19 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 :root {
     --black: #000000;
     --white: #FFFFFF;
@@ -32,6 +45,22 @@ body {
     background-image: url('images/topography.svg');
     background-size: 600px 600px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+/* Subtle grain overlay for depth */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] body::after {
+    opacity: 0.05;
 }
 
 [data-theme="dark"] body {
@@ -77,12 +106,23 @@ nav {
     text-decoration: none;
     color: var(--black);
     font-weight: bold;
-    transition: all 0.2s;
+    transition: color 0.2s;
+    position: relative;
 }
 
-.nav-links a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 3px;
+    background: var(--black);
+    transition: width 0.25s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 @keyframes fadeUp {
@@ -99,6 +139,21 @@ main {
 
 .hero-section {
     margin-bottom: 4rem;
+    position: relative;
+}
+
+.hero-section h1 {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-section h1::after {
+    content: '';
+    display: none;
+}
+
+[data-theme="dark"] .hero-section h1::after {
+    display: none;
 }
 
 h1 {
@@ -150,6 +205,10 @@ h1 {
     color: var(--white);
 }
 
+.link-button.primary:hover {
+    filter: brightness(1.08);
+}
+
 .recent-posts h2,
 .page-header h1 {
     font-size: 2rem;
@@ -170,6 +229,12 @@ h1 {
     background-color: var(--white);
     border: var(--border);
     padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 6px 0 var(--black);
 }
 
 .post-date {
@@ -1042,10 +1107,222 @@ html.focus-mode[data-theme="light"] {
     color: #718096;
 }
 
+/* About — todo sticky note */
+.todo-note {
+    --note-bg: #fff4a8;
+    --note-line: rgba(0, 0, 0, 0.07);
+    --note-ink: rgba(0, 0, 0, 0.82);
+
+    margin: 0.9rem 0 1.6rem;
+    max-width: 560px;
+    padding: 1.1rem 1.2rem 1.15rem;
+    color: var(--note-ink);
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.18)),
+        repeating-linear-gradient(
+            to bottom,
+            var(--note-line) 0,
+            var(--note-line) 1px,
+            transparent 1px,
+            transparent 28px
+        );
+    background-color: var(--note-bg);
+    box-shadow:
+        0 18px 32px rgba(0, 0, 0, 0.14),
+        0 2px 0 rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    transform: rotate(-1.2deg);
+    position: relative;
+}
+
+/* "Tape" */
+.todo-note::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 55%;
+    transform: translateX(-50%) rotate(2.5deg);
+    width: 160px;
+    height: 30px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.10);
+}
+
+/* Notebook margin line */
+.todo-note::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    bottom: 14px;
+    left: 18px;
+    width: 2px;
+    background: rgba(255, 99, 72, 0.35);
+    border-radius: 2px;
+}
+
+.todo-note-title {
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-bottom: 0.85rem;
+    padding-left: 0.4rem;
+}
+
+.todo-note-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.todo-note-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.35rem 0 0.35rem 0.2rem;
+}
+
+.todo-box {
+    width: 1.05rem;
+    height: 1.05rem;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 4px;
+    border: 2px solid rgba(0, 0, 0, 0.55);
+    background: rgba(255, 255, 255, 0.25);
+    font-weight: 900;
+    line-height: 1;
+    margin-top: 0.15rem;
+    flex: 0 0 auto;
+}
+
+.todo-note-list .is-done {
+    text-decoration: line-through;
+    opacity: 0.75;
+}
+
+.todo-note-list .is-done .todo-box {
+    border-color: rgba(29, 209, 161, 0.95);
+    background: rgba(29, 209, 161, 0.16);
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.todo-note-list .is-progress .todo-box {
+    border-color: rgba(255, 165, 2, 0.95);
+    background: rgba(255, 165, 2, 0.14);
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.todo-note-list .is-todo .todo-box {
+    border-color: rgba(0, 0, 0, 0.45);
+    background: rgba(255, 255, 255, 0.22);
+}
+
+[data-theme="dark"] .todo-note {
+    --note-bg: #2a240f;
+    --note-line: rgba(255, 255, 255, 0.06);
+    --note-ink: rgba(255, 255, 255, 0.86);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow:
+        0 18px 36px rgba(0, 0, 0, 0.55),
+        0 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .todo-note::before {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="dark"] .todo-note::after {
+    background: rgba(255, 99, 72, 0.22);
+}
+
+[data-theme="dark"] .todo-box {
+    border-color: rgba(255, 255, 255, 0.38);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] .todo-note-list .is-done .todo-box {
+    border-color: rgba(29, 209, 161, 0.85);
+    background: rgba(29, 209, 161, 0.12);
+}
+
+[data-theme="dark"] .todo-note-list .is-progress .todo-box {
+    border-color: rgba(255, 165, 2, 0.85);
+    background: rgba(255, 165, 2, 0.10);
+}
+
 /* Books — timeline reading log */
 .bookshelf {
     max-width: 750px;
     position: relative;
+}
+
+.books-meta {
+    font-size: 0.95rem;
+    color: #777;
+    margin-top: 0.25rem;
+}
+
+.books-meta a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    opacity: 0.9;
+}
+
+.books-meta a:hover {
+    opacity: 1;
+}
+
+.books-meta-sep {
+    opacity: 0.6;
+    padding: 0 0.2rem;
+}
+
+[data-theme="dark"] .books-meta {
+    color: #a0aec0;
+}
+
+.books-summary {
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+[data-theme="dark"] .books-summary {
+    color: #a0aec0;
+}
+
+.books-by-year {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.books-year-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.55rem;
+    border: 2px solid var(--black);
+    background: var(--white);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.books-year-count {
+    font-weight: 700;
+    opacity: 0.7;
 }
 
 .book-year-section {
@@ -1749,4 +2026,134 @@ footer .footer-links a:hover {
     .cmd-palette {
         max-height: 70vh;
     }
+}
+
+/* ─── Back to top ───────────────────────────────────── */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 3px solid var(--black);
+    background: var(--yellow);
+    color: var(--black);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s, box-shadow 0.2s;
+    box-shadow: 3px 3px 0 var(--black);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    box-shadow: 5px 5px 0 var(--black);
+    transform: translateY(-2px);
+}
+
+.back-to-top:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ─── Scroll reveal ─────────────────────────────────── */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ─── Toast (easter egg) ────────────────────────────── */
+.toast-egg {
+    position: fixed;
+    bottom: 5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    background: var(--black);
+    color: var(--yellow);
+    padding: 0.6rem 1.2rem;
+    border: 3px solid var(--yellow);
+    font-weight: bold;
+    font-size: 0.9rem;
+    z-index: 10001;
+    opacity: 0;
+    box-shadow: 4px 4px 0 var(--yellow);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast-egg.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ─── Confetti container ─────────────────────────────── */
+#confetti-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+/* ─── Konami mode (temporary secret styling) ─────────── */
+html.konami-mode body {
+    background-image: none !important;
+}
+
+html.konami-mode::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9996;
+    background: radial-gradient(1200px 700px at 20% 10%, rgba(78,205,196,0.20), transparent 55%),
+                radial-gradient(900px 500px at 80% 30%, rgba(255,107,107,0.18), transparent 60%),
+                radial-gradient(900px 700px at 50% 90%, rgba(255,230,109,0.14), transparent 60%);
+    filter: saturate(1.2);
+}
+
+html.konami-mode::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9996;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.0) 0px,
+        rgba(0, 0, 0, 0.0) 2px,
+        rgba(0, 0, 0, 0.08) 3px
+    );
+    mix-blend-mode: multiply;
+    opacity: 0.22;
+}
+
+@keyframes konamiHue {
+    from { filter: hue-rotate(0deg); }
+    to { filter: hue-rotate(360deg); }
+}
+
+html.konami-mode {
+    animation: konamiHue 3.2s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.konami-mode { animation: none; }
+    html.konami-mode::after { opacity: 0.12; }
 }

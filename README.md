@@ -18,6 +18,9 @@ This site uses a **neobrutal** aesthetic:
 - `about.html` - About page
 - `posts/` - Individual blog posts
 - `style.css` - All styling in one file
+- `artwork/` - Artwork images
+- `photos/` - Photo images
+- `scripts/optimize_images.py` - Local image optimizer (macOS)
 
 ## Adding New Posts
 
@@ -147,3 +150,18 @@ Works on all modern browsers. The design uses basic CSS features that are widely
 ## License
 
 Feel free to use this template for your own site.
+
+## Image optimization (recommended)
+
+If you add lots of images, it’s easy for file sizes to get huge (even if the dimensions look fine). This repo includes a small helper script that optimizes images using macOS’s built-in `sips`.
+
+- **Drop originals** into:
+  - `artwork/_raw/`
+  - `photos/_raw/`
+- **Run**:
+
+```bash
+python3 scripts/optimize_images.py
+```
+
+This will write optimized versions into `artwork/` and `photos/` (resized to max 2000px, JPEG quality 80 by default).

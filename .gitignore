@@ -1,0 +1,9 @@
+.DS_Store
+
+# Local IDE files
+.idea/
+
+# Raw, unoptimized images (keep local, don't publish)
+artwork/_raw/
+photos/_raw/
+
